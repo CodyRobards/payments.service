@@ -1,0 +1,11 @@
+# Maven build outputs
+**/target
+
+# Git metadata
+.git
+.gitignore
+.gitattributes
+
+# IDE configuration
+*.iml
+.idea
