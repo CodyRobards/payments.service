@@ -4,6 +4,7 @@ import com.example.payments.model.PaymentRequest;
 import com.example.payments.model.RefundRequest;
 import com.example.payments.service.PaymentService;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/payments")
@@ -16,7 +17,7 @@ public class PaymentController {
     }
 
     @PostMapping("/authorize")
-    public String authorize(@RequestBody PaymentRequest request) {
+    public String authorize( @Valid @RequestBody PaymentRequest request) {
         return service.authorize(request);
     }
 
@@ -26,7 +27,7 @@ public class PaymentController {
     }
 
     @PostMapping("/refund")
-    public String refund(@RequestBody RefundRequest request) {
+    public String refund(@Valid @RequestBody RefundRequest request) {
         return service.refund(request);
     }
 }
