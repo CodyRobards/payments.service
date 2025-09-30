@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
@@ -33,7 +32,6 @@ class PaymentControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    @MockBean
     private PaymentService paymentService;
 
     @Test
@@ -71,11 +69,11 @@ class PaymentControllerTest {
     @DisplayName("POST /capture returns service message")
     void captureReturnsServiceMessage() throws Exception {
         Mockito.when(paymentService.capture("AUTH-123"))
-                .thenReturn("Captured payment: PAY-321");
+                .thenReturn("PAY-321");
 
         mockMvc.perform(post("/api/payments/capture").param("authId", "AUTH-123"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Captured payment: PAY-321"));
+                .andExpect(content().string("PAY-321"));
     }
 
     @Test

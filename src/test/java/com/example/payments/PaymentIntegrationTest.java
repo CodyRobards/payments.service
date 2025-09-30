@@ -46,11 +46,10 @@ class PaymentIntegrationTest {
         MvcResult captureResult = mockMvc.perform(post("/api/payments/capture")
                         .param("authId", authId))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Captured payment: ")))
                 .andReturn();
 
         String captureMessage = captureResult.getResponse().getContentAsString();
-        String paymentId = captureMessage.replace("Captured payment: ", "").trim();
+        String paymentId = captureMessage.trim();
         assertThat(paymentId).startsWith("PAY-");
 
         RefundRequest refundRequest = new RefundRequest();

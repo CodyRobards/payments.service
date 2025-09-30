@@ -33,7 +33,7 @@ public class PaymentService {
         }
 
         payment.status = PaymentStatus.CAPTURED;
-        return "Captured payment: " + paymentId;
+        return paymentId;
     }
 
     public String refund(RefundRequest request) {

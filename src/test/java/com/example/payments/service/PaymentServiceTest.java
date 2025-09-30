@@ -46,7 +46,7 @@ class PaymentServiceTest {
 
         String result = service.capture(authId);
 
-        assertThat(result).isEqualTo("Captured payment: " + payment.paymentId);
+        assertThat(result).isEqualTo(payment.paymentId);
         assertThat(payment.status).isEqualTo(PaymentStatus.CAPTURED);
     }
 
