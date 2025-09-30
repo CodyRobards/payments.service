@@ -1,5 +1,6 @@
 package com.example.payments.web;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.boot.web.servlet.error.ErrorController;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 import java.util.Objects;
 
+@Hidden
 @RestController
 public class AppStatusController implements ErrorController {
 
@@ -25,6 +27,7 @@ public class AppStatusController implements ErrorController {
         return ResponseEntity.ok(payload);
     }
 
+    @Hidden
     @RequestMapping("/error")
     public ResponseEntity<ProblemDetail> handleError(HttpServletRequest request) {
         HttpStatus status = resolveStatus(request);
