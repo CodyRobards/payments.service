@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 import java.util.Objects;
 
-@Hidden
 @RestController
 public class AppStatusController implements ErrorController {
 
